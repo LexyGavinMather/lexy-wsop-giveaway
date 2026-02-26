@@ -172,12 +172,16 @@ footer a { color: var(--gold); text-decoration: none; }
 </div>
 <div style="margin:24px 0 20px">
 <div class="checkbox-item">
-<input type="checkbox" id="wsopCheck" required>
-<label for="wsopCheck"> I confirm I follow @WSOP on Twitter/X and have tagged them in my entry post <span class="required">*</span></label>
+<input type="checkbox" id="newsletter" checked>
+<label for="newsletter"> Subscribe me to Lexy Gavin-Mather's Poker Newsletter</label>
 </div>
 <div class="checkbox-item">
-<input type="checkbox" id="newsletter" checked>
-<label for="newsletter"> Subscribe me to Lexy's newsletter</label>
+<input type="checkbox" id="accelerator" checked>
+<label for="accelerator"> Sign me up for Lexy Gavin-Mather's course — <strong style="color:var(--gold)">The Poker Accelerator</strong></label>
+</div>
+<div class="checkbox-item">
+<input type="checkbox" id="wsopCheck" required>
+<label for="wsopCheck"> I confirm I follow <strong>@WSOP</strong> on Twitter/X and have tagged them in my entry post <span class="required">*</span></label>
 </div>
 <div class="checkbox-item">
 <input type="checkbox" id="terms" required>
@@ -270,6 +274,7 @@ instagram: document.getElementById('instagram').value || null,
 reason: document.getElementById('reason').value,
 wsopFollowed: document.getElementById('wsopCheck').checked,
 newsletter: document.getElementById('newsletter').checked,
+pokerAccelerator: document.getElementById('accelerator').checked,
 agreedToTerms: document.getElementById('terms').checked,
 source: 'lexypokergiveaway.com'
 };
