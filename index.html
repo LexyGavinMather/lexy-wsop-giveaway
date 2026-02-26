@@ -55,9 +55,9 @@ input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
 .modal-inner { background: #1a1a1a; border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: 18px; padding: 44px 36px; max-width: 480px; width: 100%; text-align: center; position: relative; }
 .modal-inner h2 { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--gold); margin-bottom: 12px; }
 .modal-inner p { font-size: 15px; color: #aaa; margin-bottom: 18px; }
-.modal-offer { background: linear-gradient(135deg, var(--dark-red), #111; border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin: 20px 0; }
+.modal-offer { background: linear-gradient(135deg, var(--dark-red), #111); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 20px 0; }
 .modal-offer h3 { color: var(--gold); font-size: 18px; margin-bottom: 10px; }
-.claim-btn { display: inline-block; background: var(--gold); color: #111; font-weight: 700; padding: 11px 28px; border-radius: 8px; text-decoration: none; font-size: 14px; }
+.claim-btn { display: inline-block; background: var(--gold); color: #111; font-weight: 800; padding: 13px 28px; border-radius: 10px; text-decoration: none; font-size: 15px; }
 .socials { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
 .soc-btn { padding: 10px 16px; background: #222; color: #fff; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; }
 .soc-btn:hover { background: var(--red); }
@@ -165,18 +165,32 @@ footer a { color: var(--gold); text-decoration: none; }
 </div>
 <div class="modal" id="modal">
 <div class="modal-inner">
-<button class="close-btn" onclick="closeModal()">✕</button>
+<button class="close-btn" onclick="closeModal()" aria-label="Close">✕</button>
+<div style="font-size:42px;margin-bottom:10px;">🎉</div>
 <h2>You're In!</h2>
-<p>Your entry has been received! Good luck in the draw on March 11th!</p>
-<div class="modal-offer">
-<h3>Exclusive Bonus</h3>
-<p>Claim 1 YEAR FREE access to Lexy's poker training course!</p>
-<a href="https://lexygavinmather.com" target="_blank" class="claim-btn">Claim Free Course</a>
+<p style="font-size:16px;color:#ccc;margin-bottom:6px;">Your entry is confirmed. Draw is <strong style="color:#fff;">March 11, 2026</strong>.</p>
+<p style="font-size:13px;color:#888;margin-bottom:22px;">Check your inbox — a confirmation email is on its way.</p>
+<div class="modal-offer" style="background:linear-gradient(135deg,rgba(139,0,0,0.4),rgba(20,20,20,0.9));border:1px solid var(--border);border-radius:14px;padding:24px;margin:0 0 22px;text-align:left;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+    <span style="font-size:24px;">🃏</span>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;">Subscriber Exclusive</div>
+      <h3 style="font-size:18px;color:#fff;margin:2px 0 0;">1 Year FREE Poker Training</h3>
+    </div>
+  </div>
+  <p style="font-size:13.5px;color:#ccc;line-height:1.6;margin-bottom:16px;">Because you signed up for Lexy's newsletter, you unlock <strong style="color:#fff;">free access to her full poker training course on Thinkific</strong> — normally a paid membership.</p>
+  <a href="https://lexy-gavin-mather.thinkific.com" target="_blank" rel="noopener" class="claim-btn" style="display:block;text-align:center;padding:13px;font-size:15px;border-radius:10px;background:var(--gold);color:#111;font-weight:800;text-decoration:none;">Claim My Free Course →</a>
 </div>
-<p>Follow Lexy for updates:</p>
-<div class="socials">
-<a href="https://twitter.com/LexyGavinPoker" target="_blank" class="soc-btn">Twitter/X</a>
-<a href="https://www.instagram.com/lexygavinpoker/" target="_blank" class="soc-btn">Instagram</a>
+<p style="font-size:13px;color:#888;margin-bottom:12px;">Follow Lexy for winner announcement:</p>
+<div class="socials" style="gap:8px;">
+<a href="https://twitter.com/LexyGavinPoker" target="_blank" rel="noopener" class="soc-btn" style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center;">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.264 5.632L18.243 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  @LexyGavinPoker
+</a>
+<a href="https://www.instagram.com/lexygavinpoker/" target="_blank" rel="noopener" class="soc-btn" style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center;">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  @lexygavinpoker
+</a>
 </div>
 </div>
 </div>
