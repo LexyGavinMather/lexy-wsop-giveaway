@@ -9,8 +9,9 @@
 <style>
 :root { --red: #C0152F; --dark-red: #8B0000; --gold: #D4AF37; --card-bg: rgba(15,15,15,0.88); --border: rgba(212,175,55,0.35); --focus: rgba(212,175,55,0.45); }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Montserrat', sans-serif; color: #f0f0f0; min-height: 100vh; overflow-x: hidden; }
-.bg-layer { position: fixed; inset: 0; z-index: 0; background-image: url('https://user-gen-media-assets.s3.amazonaws.com/gemini_images/ad35a890-95c8-4160-953f-f1f9a5ebc65a.png'); background-size: cover; background-position: center; }
+html { background: #000; }
+body { font-family: 'Montserrat', sans-serif; color: #f0f0f0; min-height: 100vh; min-height: -webkit-fill-available; overflow-x: hidden; background: #0a0a0a; }
+.bg-layer { position: fixed; inset: 0; z-index: 0; background-image: url('https://user-gen-media-assets.s3.amazonaws.com/gemini_images/ad35a890-95c8-4160-953f-f1f9a5ebc65a.png'); background-size: cover; background-position: center; background-color: #000; }
 .bg-overlay { position: fixed; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.92) 100%); }
 .page { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 48px 20px 60px; }
 .hero { text-align: center; margin-bottom: 40px; }
