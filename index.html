@@ -217,7 +217,7 @@ footer a { color: var(--gold); text-decoration: none; }
   <div style="font-size:11px;font-weight:800;color:#ff6900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">🎓 Subscriber Exclusive</div>
   <h3 style="font-size:20px;color:#fff;font-weight:800;margin:0 0 8px;line-height:1.2;">ENROLL NOW AND GET INSTANT ACCESS TO THE POKER ACCELERATOR</h3>
   <p style="font-size:13px;color:#ccc;line-height:1.6;margin-bottom:18px;">140+ lessons, 8.5+ hours of expert video, quizzes, and live community. Lexy's complete system — yours free as a newsletter subscriber.</p>
-  <a href="https://lexy-gavin-mather.thinkific.com" target="_blank" rel="noopener" style="display:block;text-align:center;padding:15px 20px;font-size:16px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;border-radius:6px;background:#ff6900;color:#fff;text-decoration:none;box-shadow:0 4px 18px rgba(255,105,0,0.4);transition:background 0.2s;" onmouseover="this.style.background='#e05a00'" onmouseout="this.style.background='#ff6900'">CLAIM MY FREE COURSE →</a>
+  <a href="https://lexy-gavin-mather.thinkific.com" target="_blank" rel="noopener" id="claim-course-btn" style="display:block;text-align:center;padding:15px 20px;font-size:16px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;border-radius:6px;background:#ff6900;color:#fff;text-decoration:none;box-shadow:0 4px 18px rgba(255,105,0,0.4);transition:background 0.2s;" onmouseover="this.style.background='#e05a00'" onmouseout="this.style.background='#ff6900'" onclick="subscribeAndClaim(event)">CLAIM MY FREE COURSE →</a>
 </div>
 
 <!-- Follow section -->
@@ -314,6 +314,39 @@ function openModal() {
 }
 function closeModal() { document.getElementById('modal').classList.remove('open'); }
 document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+async function subscribeAndClaim(e) {
+  // Don't block the link — let Thinkific open in new tab immediately
+  // Fire newsletter signup in background using the email from the form
+  const email = document.getElementById('yourEmail').value;
+  const name = document.getElementById('yourName').value || '';
+  if (!email) return;
+
+  // Update button to show it's working
+  const btn = document.getElementById('claim-course-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Enrolling you…';
+
+  try {
+    await fetch("https://hooks.zapier.com/hooks/catch/15437751/u04j4su/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email,
+        firstName: name.split(' ')[0] || '',
+        lastName: name.split(' ').slice(1).join(' ') || '',
+        newsletter: true,
+        pokerAccelerator: true,
+        source: 'claim-free-course-btn',
+        timestamp: new Date().toISOString()
+      })
+    });
+    btn.textContent = '✓ Enrolled! Opening course…';
+    btn.style.background = '#22a86e';
+  } catch(err) {
+    btn.textContent = original;
+  }
+}
 </script>
 </body>
 </html>
