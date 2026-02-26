@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Win €1,000 WSOP Ladies Championship | Lexy Gavin-Mather Giveaway</title>
+<meta name="description" content="Enter to win a €1,000 buy-in to the WSOP Europe Ladies Championship in Prague on April 4, 2026.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root { --red: #C0152F; --dark-red: #8B0000; --gold: #D4AF37; --card-bg: rgba(15,15,15,0.88); --border: rgba(212,175,55,0.35); --focus: rgba(212,175,55,0.45); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Montserrat', sans-serif; color: #f0f0f0; min-height: 100vh; overflow-x: hidden; }
+.bg-layer { position: fixed; inset: 0; z-index: 0; background-image: url('https://user-gen-media-assets.s3.amazonaws.com/gemini_images/ad35a890-95c8-4160-953f-f1f9a5ebc65a.png'); background-size: cover; background-position: center; }
+.bg-overlay { position: fixed; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.92) 100%); }
+.page { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 48px 20px 60px; }
+.hero { text-align: center; margin-bottom: 40px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 6vw, 54px); font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
+.hero h1 span { color: var(--red); }
+.sponsor-line { font-size: 15px; color: #ccc; margin-bottom: 8px; }
+.sponsor-line strong { color: var(--gold); }
+.prize { font-size: clamp(22px, 4vw, 34px); font-weight: 800; color: var(--gold); margin-bottom: 22px; }
+.badges { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; padding: 12px 24px; font-size: 14px; line-height: 1.8; }
+.card { background: var(--card-bg); backdrop-filter: blur(14px); border: 1px solid var(--border); border-radius: 18px; padding: 38px 40px; }
+.card h2 { font-size: 22px; color: #fff; margin-bottom: 22px; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+.requirements { background: rgba(212,175,55,0.08); border-left: 4px solid var(--gold); border-radius: 8px; padding: 18px 20px; margin-bottom: 28px; }
+.requirements p { font-weight: 700; color: var(--gold); margin-bottom: 10px; font-size: 14px; }
+.requirements ul { list-style: none; }
+.requirements li { font-size: 14px; padding: 5px 0 5px 24px; position: relative; color: #ddd; }
+.requirements li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+.requirements li a { color: var(--gold); }
+.form-group { margin-bottom: 20px; }
+label.field-label { display: block; font-size: 13px; font-weight: 600; color: #ccc; margin-bottom: 7px; }
+.required { color: var(--red); }
+input[type="text"], input[type="email"], textarea { width: 100%; padding: 13px 15px; background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 8px; font-family: inherit; font-size: 15px; color: #fff; }
+input:focus, textarea:focus { outline: none; border-color: var(--gold); }
+textarea { min-height: 110px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
+.radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+.radio-opt { flex: 1; min-width: 180px; display: flex; align-items: center; gap: 10px; padding: 14px 16px; border: 2px solid rgba(255,255,255,0.15); border-radius: 8px; cursor: pointer; }
+.radio-opt:hover { border-color: var(--gold); }
+.radio-opt input { accent-color: var(--gold); width: 18px; height: 18px; }
+.radio-opt label { cursor: pointer; font-size: 14px; font-weight: 600; }
+#nomineeSection { display: none; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 20px; margin-top: 20px; }
+#nomineeSection h3 { font-size: 16px; color: var(--gold); margin-bottom: 16px; }
+.checkbox-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border-radius: 8px; background: rgba(212,175,55,0.05); border: 1px solid transparent; margin-bottom: 12px; cursor: pointer; }
+.checkbox-item:hover { border-color: rgba(212,175,55,0.3); }
+.checkbox-item input { accent-color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
+.checkbox-item label { font-size: 13.5px; color: #ccc; line-height: 1.5; cursor: pointer; }
+.checkbox-item label a { color: var(--red); }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.submit-btn { width: 100%; padding: 17px; background: var(--red); color: #fff; border: none; border-radius: 8px; font-family: inherit; font-size: 17px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+.submit-btn:hover { background: #a0102a; }
+.modal { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.88); align-items: center; justify-content: center; padding: 20px; }
+.modal.open { display: flex; }
+.modal-inner { background: #1a1a1a; border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: 18px; padding: 44px 36px; max-width: 480px; width: 100%; text-align: center; position: relative; }
+.modal-inner h2 { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--gold); margin-bottom: 12px; }
+.modal-inner p { font-size: 15px; color: #aaa; margin-bottom: 18px; }
+.modal-offer { background: linear-gradient(135deg, var(--dark-red), #111; border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin: 20px 0; }
+.modal-offer h3 { color: var(--gold); font-size: 18px; margin-bottom: 10px; }
+.claim-btn { display: inline-block; background: var(--gold); color: #111; font-weight: 700; padding: 11px 28px; border-radius: 8px; text-decoration: none; font-size: 14px; }
+.socials { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+.soc-btn { padding: 10px 16px; background: #222; color: #fff; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; }
+.soc-btn:hover { background: var(--red); }
+.close-btn { position: absolute; top: 14px; right: 16px; background: none; border: none; color: #666; font-size: 22px; cursor: pointer; }
+footer { text-align: center; padding: 32px 20px; margin-top: 40px; border-top: 1px solid rgba(212,175,55,0.2); color: rgba(255,255,255,0.55); font-size: 13px; }
+footer a { color: var(--gold); text-decoration: none; }
+.error-msg { color: var(--red); font-size: 12px; margin-top: 5px; display: none; }
+@media (max-width:580px) { .card { padding: 24px 18px; } .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="bg-layer"></div>
+<div class="bg-overlay"></div>
+<div class="page">
+<div class="hero">
+<h1>Win Your Seat at <span>WSOP Europe</span></h1>
+<p class="sponsor-line">Sponsored by <strong>WSOP</strong> and Professional Poker Player <strong>Lexy Gavin-Mather</strong></p>
+<p class="prize">€1,000 Ladies Championship Entry</p>
+<div class="badges"> <strong>Event:</strong> April 4, 2026 | Prague, Czech Republic<br><strong>Deadline:</strong> March 10, 2026 | <strong>Winner:</strong> March 11, 2026 </div>
+</div>
+<div class="card">
+<h2>Enter to Win</h2>
+<div class="requirements">
+<p>Entry Requirements:</p>
+<ul>
+<li>Must be a woman (or nominating a woman)</li>
+<li>Must follow @WSOP on Twitter/X and tag them</li>
+<li>Must tag @WSOP in your entry post</li>
+<li>Explain why you (or your nominee) should be picked</li>
+</ul>
+</div>
+<form id="giveawayForm" novalidate>
+<div class="form-group">
+<label class="field-label">Who are you entering? <span class="required">*</span></label>
+<div class="radio-group">
+<div class="radio-opt">
+<input type="radio" id="self" name="entryType" value="self" checked>
+<label for="self">Nominate Myself</label>
+</div>
+<div class="radio-opt">
+<input type="radio" id="other" name="entryType" value="other">
+<label for="other">Nominate Someone Else</label>
+</div>
+</div>
+</div>
+<div class="grid-2">
+<div class="form-group">
+<label class="field-label" for="yourName">Your Name <span class="required">*</span></label>
+<input type="text" id="yourName" placeholder="Jane Doe" required>
+</div>
+<div class="form-group">
+<label class="field-label" for="yourEmail">Your Email <span class="required">*</span></label>
+<input type="email" id="yourEmail" placeholder="jane@example.com" required>
+<div class="error-msg" id="emailError">Please enter a valid email.</div>
+</div>
+</div>
+<div id="nomineeSection">
+<h3>Nominee's Information</h3>
+<div class="grid-2">
+<div class="form-group">
+<label class="field-label" for="nomineeName">Nominee's Name <span class="required">*</span></label>
+<input type="text" id="nomineeName" placeholder="Nominee Name">
+</div>
+<div class="form-group">
+<label class="field-label" for="nomineeEmail">Nominee's Email <span class="required">*</span></label>
+<input type="email" id="nomineeEmail" placeholder="nominee@example.com">
+</div>
+</div>
+</div>
+<div class="grid-2">
+<div class="form-group">
+<label class="field-label" for="twitter">Twitter/X Handle (optional)</label>
+<input type="text" id="twitter" placeholder="@username">
+</div>
+<div class="form-group">
+<label class="field-label" for="instagram">Instagram Handle (optional)</label>
+<input type="text" id="instagram" placeholder="@username">
+</div>
+</div>
+<div class="form-group">
+<label class="field-label" for="reason">Why should you (or your nominee) be picked? <span class="required">*</span></label>
+<textarea id="reason" placeholder="Share your poker journey..." required></textarea>
+</div>
+<div style="margin:24px 0 20px">
+<div class="checkbox-item">
+<input type="checkbox" id="wsopCheck" required>
+<label for="wsopCheck"> I confirm I follow @WSOP on Twitter/X and have tagged them in my entry post <span class="required">*</span></label>
+</div>
+<div class="checkbox-item">
+<input type="checkbox" id="newsletter" checked>
+<label for="newsletter"> Subscribe me to Lexy's newsletter</label>
+</div>
+<div class="checkbox-item">
+<input type="checkbox" id="terms" required>
+<label for="terms"> I understand the winner is randomly selected on March 11, 2026 <span class="required">*</span></label>
+</div>
+</div>
+<button type="submit" class="submit-btn">Submit My Entry</button>
+</form>
+</div>
+<footer>
+<p><a href="https://lexygavinmather.com" target="_blank">Get free poker coaching at LexyGavinMather.com</a></p>
+<p>Sponsored by <strong>WSOP</strong> & <strong>Lexy Gavin-Mather</strong></p>
+</footer>
+</div>
+<div class="modal" id="modal">
+<div class="modal-inner">
+<button class="close-btn" onclick="closeModal()">✕</button>
+<h2>You're In!</h2>
+<p>Your entry has been received! Good luck in the draw on March 11th!</p>
+<div class="modal-offer">
+<h3>Exclusive Bonus</h3>
+<p>Claim 1 YEAR FREE access to Lexy's poker training course!</p>
+<a href="https://lexygavinmather.com" target="_blank" class="claim-btn">Claim Free Course</a>
+</div>
+<p>Follow Lexy for updates:</p>
+<div class="socials">
+<a href="https://twitter.com/LexyGavinPoker" target="_blank" class="soc-btn">Twitter/X</a>
+<a href="https://www.instagram.com/lexygavinpoker/" target="_blank" class="soc-btn">Instagram</a>
+</div>
+</div>
+</div>
+<script>
+document.querySelectorAll('input[name="entryType"]').forEach(r => {
+r.addEventListener('change', () => {
+const ns = document.getElementById('nomineeSection');
+const ne = document.getElementById('nomineeEmail');
+const nn = document.getElementById('nomineeName');
+if (r.value === 'other' && r.checked) {
+ns.style.display = 'block';
+nn.required = true;
+ne.required = true;
+} else {
+ns.style.display = 'none';
+nn.required = false;
+ne.required = false;
+nn.value = '';
+ne.value = '';
+}
+});
+});
+document.getElementById('giveawayForm').addEventListener('submit', async e => {
+e.preventDefault();
+const email = document.getElementById('yourEmail').value;
+const emailErr = document.getElementById('emailError');
+const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+if (!emailValid) { emailErr.style.display = 'block'; return; }
+emailErr.style.display = 'none';
+const payload = {
+entryId: 'WSOP_' + Date.now() + '_' + Math.random().toString(36).substr(2,8).toUpperCase(),
+timestamp: new Date().toISOString(),
+entryType: document.querySelector('input[name="entryType"]:checked').value,
+yourName: document.getElementById('yourName').value,
+yourEmail: email,
+nomineeName: document.getElementById('nomineeName').value || null,
+nomineeEmail: document.getElementById('nomineeEmail').value || null,
+twitter: document.getElementById('twitter').value || null,
+instagram: document.getElementById('instagram').value || null,
+reason: document.getElementById('reason').value,
+wsopFollowed: document.getElementById('wsopCheck').checked,
+newsletter: document.getElementById('newsletter').checked,
+agreedToTerms: document.getElementById('terms').checked,
+source: 'lexypokergiveaway.com'
+};
+console.log('Entry Payload:', JSON.stringify(payload, null, 2));
+// TODO: Add Zapier webhook URL here
+openModal();
+e.target.reset();
+document.getElementById('nomineeSection').style.display = 'none';
+});
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+</script>
+</body>
+</html>
