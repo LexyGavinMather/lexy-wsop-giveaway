@@ -226,7 +226,10 @@ agreedToTerms: document.getElementById('terms').checked,
 source: 'lexypokergiveaway.com'
 };
 console.log('Entry Payload:', JSON.stringify(payload, null, 2));
-try { await fetch("https://hooks.zapier.com/hooks/catch/15437751/u04j4su/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); } catch(e) { console.error("Webhook failed:", e); }
+// Send to Zapier (Beehiiv subscriber)
+try { await fetch("https://hooks.zapier.com/hooks/catch/15437751/u04j4su/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); } catch(e) { console.error("Zapier webhook failed:", e); }
+// Save entry to GitHub entries repo
+try { await fetch("https://lexy-entries-worker.bstarling1396.workers.dev", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); } catch(e) { console.error("Entries save failed:", e); }
 openModal();
 e.target.reset();
 document.getElementById('nomineeSection').style.display = 'none';
