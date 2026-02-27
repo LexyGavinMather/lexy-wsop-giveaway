@@ -295,6 +295,19 @@ const emailErr = document.getElementById('emailError');
 const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 if (!emailValid) { emailErr.style.display = 'block'; return; }
 emailErr.style.display = 'none';
+// Validate required checkboxes
+const terms = document.getElementById('terms');
+const wsopCheck = document.getElementById('wsopCheck');
+if (!terms.checked) {
+  terms.closest('.checkbox-item').style.border = '1.5px solid var(--red)';
+  terms.closest('.checkbox-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  return;
+} else { terms.closest('.checkbox-item').style.border = ''; }
+if (!wsopCheck.checked) {
+  wsopCheck.closest('.checkbox-item').style.border = '1.5px solid var(--red)';
+  wsopCheck.closest('.checkbox-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  return;
+} else { wsopCheck.closest('.checkbox-item').style.border = ''; }
 const payload = {
 entryId: 'WSOP_' + Date.now() + '_' + Math.random().toString(36).substr(2,8).toUpperCase(),
 timestamp: new Date().toISOString(),
