@@ -329,7 +329,7 @@ async function subscribeAndClaim() {
 
   const btn = document.getElementById('claim-course-btn');
   btn.disabled = true;
-  btn.textContent = 'Subscribing…';
+  btn.textContent = 'Enrolling you…';
 
   try {
     await fetch("https://hooks.zapier.com/hooks/catch/15437751/u04j4su/", {
@@ -346,9 +346,10 @@ async function subscribeAndClaim() {
         timestamp: new Date().toISOString()
       })
     });
-    btn.textContent = '✓ Subscribed! Check your email for course access.';
+    btn.textContent = '✓ Enrolled! Opening course…';
     btn.style.background = '#22a86e';
-    btn.style.onmouseover = null;
+    // Open the course in a new tab
+    window.open('https://courses.lexygavinmather.com/courses/your-first-course', '_blank');
   } catch(err) {
     btn.disabled = false;
     btn.textContent = 'SUBSCRIBE & GET INSTANT ACCESS →';
