@@ -69,14 +69,15 @@ input[type="text"], input[type="email"], textarea { width: 100%; padding: 14px 1
 input:focus, textarea:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.08); }
 textarea { min-height: 120px; resize: vertical; }
 input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
-.radio-group { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
-.radio-opt { flex: 1; min-width: 160px; display: flex; align-items: center; gap: 10px; padding: 14px 18px; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 10px; cursor: pointer; transition: border-color 0.2s; }
+.radio-group { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.radio-opt { flex: 1; min-width: 160px; display: flex; align-items: center; gap: 10px; padding: 14px 18px; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 10px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
 .radio-opt:hover, .radio-opt:has(input:checked) { border-color: var(--gold); background: rgba(212,175,55,0.06); }
 .radio-opt input { accent-color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; }
 .radio-opt label { cursor: pointer; font-size: 14px; font-weight: 600; }
-#nomineeSection { display: none; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; margin-top: 8px; }
-#nomineeSection .grid-2 { margin-bottom: 22px; }
-#nomineeSection h3 { font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.06em; }
+#nomineeSection { display: none; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 24px 24px 8px; margin-top: 4px; margin-bottom: 22px; }
+#nomineeSection .grid-2 { margin-bottom: 0; }
+#nomineeSection h3 { font-size: 11px; font-weight: 700; color: var(--gold); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; }
+#nomineeSection h3::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--gold); border-radius: 2px; }
 .checkboxes-section { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 24px; }
 .checkbox-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); margin-bottom: 10px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
 .checkbox-item:hover { border-color: rgba(212,175,55,0.35); background: rgba(212,175,55,0.04); }
