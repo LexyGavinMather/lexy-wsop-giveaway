@@ -250,6 +250,10 @@ footer a { color: var(--gold); text-decoration: none; }
 </div>
 </div>
 <script>
+// Module-level vars to hold email/name across form reset
+let _pendingEmail = '';
+let _pendingName = '';
+
 document.querySelectorAll('input[name="entryType"]').forEach(r => {
 r.addEventListener('change', () => {
 const ns = document.getElementById('nomineeSection');
@@ -300,6 +304,9 @@ console.log('Entry Payload:', JSON.stringify(payload, null, 2));
 try { await fetch("https://hooks.zapier.com/hooks/catch/15437751/u04j4su/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); } catch(e) { console.error("Zapier webhook failed:", e); }
 // Save entry to GitHub entries repo
 try { await fetch("https://lexy-entries-worker.bstarling1396.workers.dev", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); } catch(e) { console.error("Entries save failed:", e); }
+// Capture email/name BEFORE reset clears the fields
+_pendingEmail = document.getElementById('yourEmail').value;
+_pendingName = document.getElementById('yourName').value || '';
 openModal();
 e.target.reset();
 document.getElementById('nomineeSection').style.display = 'none';
@@ -317,9 +324,9 @@ document.getElementById('modal').addEventListener('click', e => { if (e.target =
 
 async function subscribeAndClaim(e) {
   // Don't block the link — let Thinkific open in new tab immediately
-  // Fire newsletter signup in background using the email from the form
-  const email = document.getElementById('yourEmail').value;
-  const name = document.getElementById('yourName').value || '';
+  // Use module-level vars captured before form reset cleared the fields
+  const email = _pendingEmail || document.getElementById('yourEmail').value;
+  const name = _pendingName || document.getElementById('yourName').value || '';
   if (!email) return;
 
   // Update button to show it's working
