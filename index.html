@@ -62,19 +62,19 @@ body { font-family: 'Montserrat', sans-serif; color: #f0f0f0; min-height: 100vh;
 .requirements li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
 .requirements li a { color: var(--gold); text-decoration: underline; }
 .requirements li a:hover { color: #fff; }
-.form-group { margin-bottom: 22px; }
-label.field-label { display: block; font-size: 12px; font-weight: 700; color: #aaa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+.form-group { margin-bottom: 18px; }
+label.field-label { display: block; font-size: 12px; font-weight: 700; color: #aaa; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
 .required { color: var(--red); }
 input[type="text"], input[type="email"], textarea { width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 10px; font-family: inherit; font-size: 15px; color: #fff; transition: border-color 0.2s; box-sizing: border-box; }
 input:focus, textarea:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.08); }
 textarea { min-height: 120px; resize: vertical; }
 input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
-.radio-group { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.radio-group { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
 .radio-opt { flex: 1; min-width: 160px; display: flex; align-items: center; gap: 10px; padding: 14px 18px; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 10px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
 .radio-opt:hover, .radio-opt:has(input:checked) { border-color: var(--gold); background: rgba(212,175,55,0.06); }
 .radio-opt input { accent-color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; }
 .radio-opt label { cursor: pointer; font-size: 14px; font-weight: 600; }
-#nomineeSection { display: none; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 24px 24px 8px; margin-top: 4px; margin-bottom: 22px; }
+#nomineeSection { display: none; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 20px 24px 12px; margin-top: 16px; margin-bottom: 22px; }
 #nomineeSection .grid-2 { margin-bottom: 0; }
 #nomineeSection h3 { font-size: 11px; font-weight: 700; color: var(--gold); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; }
 #nomineeSection h3::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--gold); border-radius: 2px; }
@@ -84,7 +84,7 @@ input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
 .checkbox-item input { accent-color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
 .checkbox-item label { font-size: 14px; color: #ccc; line-height: 1.55; cursor: pointer; }
 .checkbox-item label a { color: var(--gold); text-decoration: underline; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
 .grid-2 .form-group { margin-bottom: 0; }
 .submit-btn { width: 100%; padding: 18px; background: var(--red); color: #fff; border: none; border-radius: 12px; font-family: inherit; font-size: 17px; font-weight: 800; cursor: pointer; margin-top: 24px; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.2s, transform 0.1s; }
 .submit-btn:hover { background: #b01030; transform: translateY(-1px); }
