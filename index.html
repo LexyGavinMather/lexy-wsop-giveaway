@@ -44,10 +44,10 @@ body { font-family: 'Montserrat', sans-serif; color: #f0f0f0; min-height: 100vh;
 .bg-overlay { position: fixed; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.92) 100%); }
 .page { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 48px 20px 60px; }
 .hero { text-align: center; margin-bottom: 40px; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 6vw, 54px); font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
-.hero h1 .line-top { display: block; font-size: clamp(18px, 3.5vw, 32px); color: #ccc; font-weight: 400; letter-spacing: 0.05em; }
-.hero h1 .line-wsop { display: block; color: var(--red); font-size: clamp(42px, 8vw, 76px); line-height: 1; }
-.hero h1 .line-europe { display: block; font-size: clamp(22px, 4vw, 44px); }
+.hero h1 { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
+.hero h1 .line-top { display: block; font-size: clamp(18px, 3.5vw, 32px); color: #ccc; font-weight: 400; letter-spacing: 0.05em; margin-bottom: 6px; }
+.hero h1 .line-bottom { display: block; font-size: clamp(36px, 7vw, 64px); line-height: 1; }
+.hero h1 .line-bottom .wsop { color: var(--red); }
 .sponsor-line { font-size: 15px; color: #ccc; margin-bottom: 8px; }
 .sponsor-line strong { color: var(--gold); }
 .prize { font-size: clamp(22px, 4vw, 34px); font-weight: 800; color: var(--gold); margin-bottom: 22px; }
@@ -110,8 +110,7 @@ footer a { color: var(--gold); text-decoration: none; }
 <div class="hero">
 <h1>
   <span class="line-top">Win Your Seat at</span>
-  <span class="line-wsop">WSOP</span>
-  <span class="line-europe">Europe</span>
+  <span class="line-bottom"><span class="wsop">WSOP</span> Europe</span>
 </h1>
 <p class="sponsor-line">Sponsored by <strong>WSOP</strong> and Professional Poker Player <strong>Lexy Gavin-Mather</strong></p>
 <p class="prize">€1,000 Ladies Championship Entry</p>
