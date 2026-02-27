@@ -323,17 +323,21 @@ function closeModal() { document.getElementById('modal').classList.remove('open'
 document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
 
 async function subscribeAndClaim() {
-  const email = _pendingEmail || document.getElementById('yourEmail').value;
-  const name = _pendingName || document.getElementById('yourName').value || '';
-  if (!email) return;
+  const email = _pendingEmail || document.getElementById('yourEmail')?.value || '';
+  const name = _pendingName || document.getElementById('yourName')?.value || '';
 
   const btn = document.getElementById('claim-course-btn');
   btn.disabled = true;
-  btn.textContent = 'Enrolling you…';
+  btn.textContent = '🎉 You\'re enrolled! Check your email for access.';
+  btn.style.background = '#22a86e';
+  btn.onmouseover = null;
+  btn.onmouseout = null;
 
-  try {
-    await fetch("https://hooks.zapier.com/hooks/catch/15437751/u04j4su/", {
+  // Fire and forget — don't block the UI on network errors
+  if (email) {
+    fetch("https://hooks.zapier.com/hooks/catch/15437751/u04j4su/", {
       method: "POST",
+      mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: email,
@@ -345,14 +349,7 @@ async function subscribeAndClaim() {
         source: 'claim-free-course-btn',
         timestamp: new Date().toISOString()
       })
-    });
-    btn.textContent = '🎉 You\'re enrolled! Check your email for access.';
-    btn.style.background = '#22a86e';
-    btn.onmouseover = null;
-    btn.onmouseout = null;
-  } catch(err) {
-    btn.disabled = false;
-    btn.textContent = 'SUBSCRIBE & GET INSTANT ACCESS →';
+    }).catch(e => console.error('Claim webhook failed:', e));
   }
 }
 </script>
