@@ -82,7 +82,8 @@ input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
 .checkbox-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); margin-bottom: 12px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
 .checkbox-item:hover { border-color: rgba(212,175,55,0.35); background: rgba(212,175,55,0.04); }
 .checkbox-item input { accent-color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
-.checkbox-item label { font-size: 13px; color: #ccc; line-height: 1.55; cursor: pointer; }
+.checkbox-item label { font-size: 13px; color: #ccc; line-height: 1.55; cursor: pointer; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 640px) { .checkbox-item label { white-space: normal; text-overflow: unset; overflow: visible; } }
 .checkbox-item label a { color: var(--gold); text-decoration: underline; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
 .grid-2 .form-group { margin-bottom: 0; }
