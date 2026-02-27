@@ -217,7 +217,7 @@ footer a { color: var(--gold); text-decoration: none; }
   <div style="font-size:11px;font-weight:800;color:#ff6900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">🎓 Subscriber Exclusive</div>
   <h3 style="font-size:20px;color:#fff;font-weight:800;margin:0 0 8px;line-height:1.2;">ENROLL NOW AND GET INSTANT ACCESS TO THE POKER ACCELERATOR</h3>
   <p style="font-size:13px;color:#ccc;line-height:1.6;margin-bottom:18px;">140+ lessons, 8.5+ hours of expert video, quizzes, and live community. Lexy's complete system — yours free as a newsletter subscriber.</p>
-  <a href="https://lexy-gavin-mather.thinkific.com" target="_blank" rel="noopener" id="claim-course-btn" style="display:block;text-align:center;padding:15px 20px;font-size:16px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;border-radius:6px;background:#ff6900;color:#fff;text-decoration:none;box-shadow:0 4px 18px rgba(255,105,0,0.4);transition:background 0.2s;" onmouseover="this.style.background='#e05a00'" onmouseout="this.style.background='#ff6900'" onclick="subscribeAndClaim(event)">CLAIM MY FREE COURSE →</a>
+  <button id="claim-course-btn" onclick="subscribeAndClaim()" style="width:100%;padding:15px 20px;font-size:16px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;border-radius:6px;background:#ff6900;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 18px rgba(255,105,0,0.4);transition:background 0.2s;" onmouseover="this.style.background='#e05a00'" onmouseout="this.style.background='#ff6900'">SUBSCRIBE & GET INSTANT ACCESS →</button>
 </div>
 
 <!-- Follow section -->
@@ -322,17 +322,14 @@ function openModal() {
 function closeModal() { document.getElementById('modal').classList.remove('open'); }
 document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
 
-async function subscribeAndClaim(e) {
-  // Don't block the link — let Thinkific open in new tab immediately
-  // Use module-level vars captured before form reset cleared the fields
+async function subscribeAndClaim() {
   const email = _pendingEmail || document.getElementById('yourEmail').value;
   const name = _pendingName || document.getElementById('yourName').value || '';
   if (!email) return;
 
-  // Update button to show it's working
   const btn = document.getElementById('claim-course-btn');
-  const original = btn.textContent;
-  btn.textContent = 'Enrolling you…';
+  btn.disabled = true;
+  btn.textContent = 'Subscribing…';
 
   try {
     await fetch("https://hooks.zapier.com/hooks/catch/15437751/u04j4su/", {
@@ -340,6 +337,7 @@ async function subscribeAndClaim(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: email,
+        yourEmail: email,
         firstName: name.split(' ')[0] || '',
         lastName: name.split(' ').slice(1).join(' ') || '',
         newsletter: true,
@@ -348,10 +346,12 @@ async function subscribeAndClaim(e) {
         timestamp: new Date().toISOString()
       })
     });
-    btn.textContent = '✓ Enrolled! Opening course…';
+    btn.textContent = '✓ Subscribed! Check your email for course access.';
     btn.style.background = '#22a86e';
+    btn.style.onmouseover = null;
   } catch(err) {
-    btn.textContent = original;
+    btn.disabled = false;
+    btn.textContent = 'SUBSCRIBE & GET INSTANT ACCESS →';
   }
 }
 </script>
