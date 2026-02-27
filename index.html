@@ -60,7 +60,8 @@ body { font-family: 'Montserrat', sans-serif; color: #f0f0f0; min-height: 100vh;
 .requirements ul { list-style: none; }
 .requirements li { font-size: 14px; padding: 5px 0 5px 24px; position: relative; color: #ddd; }
 .requirements li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
-.requirements li a { color: var(--gold); }
+.requirements li a { color: var(--gold); text-decoration: underline; }
+.requirements li a:hover { color: #fff; }
 .form-group { margin-bottom: 20px; }
 label.field-label { display: block; font-size: 13px; font-weight: 600; color: #ccc; margin-bottom: 7px; }
 .required { color: var(--red); }
@@ -123,7 +124,7 @@ footer a { color: var(--gold); text-decoration: none; }
 <p>Entry Requirements:</p>
 <ul>
 <li>Must be a woman (or nominating a woman)</li>
-<li>Must follow @WSOP on Twitter/X and tag them</li>
+<li>Must follow <a href="https://x.com/WSOP" target="_blank" rel="noopener"><strong>@WSOP on X/Twitter</strong></a> and tag them in your post <span class="required">*</span></li>
 <li>Must tag @WSOP in your entry post</li>
 <li>Explain why you (or your nominee) should be picked</li>
 </ul>
@@ -191,7 +192,7 @@ footer a { color: var(--gold); text-decoration: none; }
 </div>
 <div class="checkbox-item">
 <input type="checkbox" id="wsopCheck" required>
-<label for="wsopCheck"> I confirm I follow <strong>@WSOP</strong> on Twitter/X and have tagged them in my entry post <span class="required">*</span></label>
+<label for="wsopCheck"> I confirm I follow <a href="https://x.com/WSOP" target="_blank" rel="noopener"><strong>@WSOP</strong></a> on Twitter/X and have tagged them in my entry post <span class="required">*</span></label>
 </div>
 <div class="checkbox-item">
 <input type="checkbox" id="terms" required>
