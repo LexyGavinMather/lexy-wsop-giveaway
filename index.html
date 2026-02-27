@@ -217,7 +217,7 @@ footer a { color: var(--gold); text-decoration: none; }
   <div style="font-size:11px;font-weight:800;color:#ff6900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">🎓 Subscriber Exclusive</div>
   <h3 style="font-size:20px;color:#fff;font-weight:800;margin:0 0 8px;line-height:1.2;">ENROLL NOW AND GET INSTANT ACCESS TO THE POKER ACCELERATOR</h3>
   <p style="font-size:13px;color:#ccc;line-height:1.6;margin-bottom:18px;">140+ lessons, 8.5+ hours of expert video, quizzes, and live community. Lexy's complete system — yours free as a newsletter subscriber.</p>
-  <button id="claim-course-btn" onclick="subscribeAndClaim()" style="width:100%;padding:15px 20px;font-size:16px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;border-radius:6px;background:#ff6900;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 18px rgba(255,105,0,0.4);transition:background 0.2s;" onmouseover="this.style.background='#e05a00'" onmouseout="this.style.background='#ff6900'">SUBSCRIBE & GET INSTANT ACCESS →</button>
+  <button id="claim-course-btn" onclick="subscribeAndClaim()" style="width:100%;padding:15px 20px;font-size:16px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;border-radius:6px;background:#ff6900;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 18px rgba(255,105,0,0.4);transition:background 0.2s;" onmouseover="this.style.background='#e05a00'" onmouseout="this.style.background='#ff6900'">YES! ENROLL ME IN THE FREE COURSE →</button>
 </div>
 
 <!-- Follow section -->
@@ -346,10 +346,10 @@ async function subscribeAndClaim() {
         timestamp: new Date().toISOString()
       })
     });
-    btn.textContent = '✓ Enrolled! Opening course…';
+    btn.textContent = '🎉 You\'re enrolled! Check your email for access.';
     btn.style.background = '#22a86e';
-    // Open the course in a new tab
-    window.open('https://courses.lexygavinmather.com/courses/your-first-course', '_blank');
+    btn.onmouseover = null;
+    btn.onmouseout = null;
   } catch(err) {
     btn.disabled = false;
     btn.textContent = 'SUBSCRIBE & GET INSTANT ACCESS →';
