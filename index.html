@@ -306,10 +306,35 @@ e.preventDefault();
 const submitBtn = e.target.querySelector('button[type="submit"]');
 const origBtnText = submitBtn ? submitBtn.innerHTML : '';
 if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = '<span style="opacity:.7">Submitting your entry…</span>'; }
+const nameField = document.getElementById('yourName');
+if (!nameField.value.trim()) {
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = origBtnText; }
+  nameField.style.border = '1.5px solid var(--red)';
+  nameField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  nameField.focus();
+  return;
+}
+nameField.style.border = '';
+
+const reasonField = document.getElementById('reason');
+if (!reasonField.value.trim()) {
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = origBtnText; }
+  reasonField.style.border = '1.5px solid var(--red)';
+  reasonField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  reasonField.focus();
+  return;
+}
+reasonField.style.border = '';
+
 const email = document.getElementById('yourEmail').value;
 const emailErr = document.getElementById('emailError');
 const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-if (!emailValid) { emailErr.style.display = 'block'; return; }
+if (!emailValid) {
+  emailErr.style.display = 'block';
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = origBtnText; }
+  document.getElementById('yourEmail').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  return;
+}
 emailErr.style.display = 'none';
 // Validate required checkboxes
 const terms = document.getElementById('terms');
@@ -357,7 +382,6 @@ _pendingName = document.getElementById('yourName').value.split(' ')[0] || 'Frien
 e.target.reset();
 document.getElementById('nomineeSection').style.display = 'none';
 openModal();
-document.getElementById('nomineeSection').style.display = 'none';
 });
 function openModal() {
   // Personalise the congrats message if we captured a name
