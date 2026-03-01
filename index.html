@@ -232,7 +232,7 @@ footer a { color: var(--gold); text-decoration: none; }
 <div style="display:inline-block;background:linear-gradient(135deg,var(--red),#c41230);color:#fff;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:16px;">Official Entry Confirmed</div>
 
 <h2 style="font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);margin:0 0 10px;line-height:1.2;">You're in the Drawing!</h2>
-<p style="font-size:15px;color:#ccc;margin:0 0 6px;line-height:1.5;">Congratulations — your entry to win a <strong style="color:#fff;">€1,000 WSOP Europe in Prague</strong> Ladies Championship seat has been received.</p>
+<p id="modal-congrats-msg" style="font-size:15px;color:#ccc;margin:0 0 6px;line-height:1.5;">Congratulations — your entry to win a <strong style="color:#fff;">€1,000 WSOP Europe in Prague</strong> Ladies Championship seat has been received.</p>
 
 <!-- Entry details card -->
 <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,215,0,0.2);border-radius:14px;padding:18px 20px;margin:18px 0;text-align:left;">
@@ -303,6 +303,9 @@ ne.value = '';
 });
 document.getElementById('giveawayForm').addEventListener('submit', async e => {
 e.preventDefault();
+const submitBtn = e.target.querySelector('button[type="submit"]');
+const origBtnText = submitBtn ? submitBtn.innerHTML : '';
+if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = '<span style="opacity:.7">Submitting your entry…</span>'; }
 const email = document.getElementById('yourEmail').value;
 const emailErr = document.getElementById('emailError');
 const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -312,11 +315,13 @@ emailErr.style.display = 'none';
 const terms = document.getElementById('terms');
 const wsopCheck = document.getElementById('wsopCheck');
 if (!terms.checked) {
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = origBtnText; }
   terms.closest('.checkbox-item').style.border = '1.5px solid var(--red)';
   terms.closest('.checkbox-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
   return;
 } else { terms.closest('.checkbox-item').style.border = ''; }
 if (!wsopCheck.checked) {
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = origBtnText; }
   wsopCheck.closest('.checkbox-item').style.border = '1.5px solid var(--red)';
   wsopCheck.closest('.checkbox-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
   return;
@@ -348,16 +353,21 @@ try { await fetch("https://hooks.zapier.com/hooks/catch/15437751/u0ml2ib/", { me
 try { await fetch("https://lexy-entries-worker.pokerclarityassistant.workers.dev", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); } catch(e) { console.error("Entries save failed:", e); }
 // Capture email/name BEFORE reset clears the fields
 _pendingEmail = document.getElementById('yourEmail').value;
-_pendingName = document.getElementById('yourName').value || '';
-openModal();
+_pendingName = document.getElementById('yourName').value.split(' ')[0] || 'Friend';
 e.target.reset();
+document.getElementById('nomineeSection').style.display = 'none';
+openModal();
 document.getElementById('nomineeSection').style.display = 'none';
 });
 function openModal() {
-  // Show course offer only if newsletter OR poker accelerator was checked
-  const wantsNewsletter = document.getElementById('newsletter').checked;
-  // No course offer in modal — just show confirmation
+  // Personalise the congrats message if we captured a name
+  const msg = document.getElementById('modal-congrats-msg');
+  if (msg && _pendingName && _pendingName !== 'Friend') {
+    msg.innerHTML = 'Congratulations <strong style="color:#fff;">' + _pendingName + '</strong> — your entry to win a <strong style="color:#fff;">€1,000 WSOP Europe in Prague</strong> Ladies Championship seat has been received.';
+  }
   document.getElementById('modal').classList.add('open');
+  const _sb = document.querySelector('#giveawayForm button[type="submit"]');
+  if (_sb) { _sb.disabled = false; }
 }
 function closeModal() { document.getElementById('modal').classList.remove('open'); }
 document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
