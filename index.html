@@ -106,6 +106,7 @@ footer { text-align: center; padding: 20px 20px; margin-top: 20px; border-top: 1
 footer a { color: var(--gold); text-decoration: none; }
 .error-msg { color: var(--red); font-size: 12px; margin-top: 5px; display: none; }
 @media (max-width:580px) { .card { padding: 24px 18px; } .grid-2 { grid-template-columns: 1fr; } }
+  @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 </style>
 </head>
 <body>
@@ -114,8 +115,8 @@ footer a { color: var(--gold); text-decoration: none; }
 <div class="page">
 <div class="hero">
 <h1>
-  <span class="line-top">Win Your Seat at</span>
-  <span class="line-bottom"><span class="wsop">WSOP</span> <span class="europe">Europe</span></span>
+  <span class="line-top">Win Your Entry To</span>
+  <span class="line-bottom"><span class="wsop">WSOP</span> <span class="europe">Europe in Prague</span></span>
 </h1>
 <p class="prize">€1,000 Ladies Championship Event</p>
 <div class="badges"> <strong>Event:</strong> April 4, 2026 | Prague, Czech Republic<br><strong>Deadline:</strong> March 10, 2026 | <strong>Winner:</strong> March 11, 2026 </div>
@@ -214,7 +215,6 @@ footer a { color: var(--gold); text-decoration: none; }
 </form>
 </div>
 <footer>
-<p>Get My Free Poker Coaching Course at <a href="https://lexygavinmather.com" target="_blank" style="color:var(--gold);text-decoration:underline;font-weight:600;">LexyGavinMather.com</a></p>
 <p style="margin-top:14px;">Sponsored by <a href="https://x.com/WSOP" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;font-weight:600;">WSOP</a> &amp; <a href="https://x.com/LexyGavinPoker" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;font-weight:600;">Lexy Gavin-Mather</a></p>
 <p style="margin-top:12px;font-size:12px;">
   <a href="/privacy.html" style="color:#888;text-decoration:underline;">Privacy Policy</a>
@@ -226,17 +226,30 @@ footer a { color: var(--gold); text-decoration: none; }
 <div class="modal" id="modal">
 <div class="modal-inner">
 <button class="close-btn" onclick="closeModal()" aria-label="Close">✕</button>
-<div style="font-size:42px;margin-bottom:10px;">🎉</div>
-<h2>You're In!</h2>
-<p style="font-size:16px;color:#ccc;margin-bottom:4px;">Your entry is confirmed. Draw is <strong style="color:#fff;">March 11, 2026</strong>.</p>
-<p style="font-size:13px;color:#888;margin-bottom:18px;">Check your inbox — a confirmation is on its way.</p>
 
-<!-- Course offer — shown only when newsletter OR accelerator is checked -->
-<div id="modal-course-offer" style="background:linear-gradient(135deg,rgba(255,105,0,0.15),rgba(20,20,20,0.95));border:2px solid #ff6900;border-radius:14px;padding:22px;margin:0 0 20px;text-align:left;">
-  <div style="font-size:11px;font-weight:800;color:#ff6900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">🎓 Subscriber Exclusive</div>
-  <h3 style="font-size:20px;color:#fff;font-weight:800;margin:0 0 8px;line-height:1.2;">ENROLL NOW AND GET INSTANT ACCESS TO THE POKER ACCELERATOR</h3>
-  <p style="font-size:13px;color:#ccc;line-height:1.6;margin-bottom:18px;">140+ lessons, 8.5+ hours of expert video, quizzes, and live community. Lexy's complete system — yours free as a newsletter subscriber.</p>
-  <button id="claim-course-btn" onclick="subscribeAndClaim()" style="width:100%;padding:15px 20px;font-size:16px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;border-radius:6px;background:#ff6900;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 18px rgba(255,105,0,0.4);transition:background 0.2s;" onmouseover="this.style.background='#e05a00'" onmouseout="this.style.background='#ff6900'">YES! ENROLL ME IN THE FREE COURSE →</button>
+<!-- Trophy animation -->
+<div style="font-size:56px;margin-bottom:4px;animation:popIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275) both;">🏆</div>
+<div style="display:inline-block;background:linear-gradient(135deg,var(--red),#c41230);color:#fff;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:16px;">Official Entry Confirmed</div>
+
+<h2 style="font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);margin:0 0 10px;line-height:1.2;">You're in the Drawing!</h2>
+<p style="font-size:15px;color:#ccc;margin:0 0 6px;line-height:1.5;">Congratulations — your entry to win a <strong style="color:#fff;">€1,000 WSOP Europe in Prague</strong> Ladies Championship seat has been received.</p>
+
+<!-- Entry details card -->
+<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,215,0,0.2);border-radius:14px;padding:18px 20px;margin:18px 0;text-align:left;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+    <span style="font-size:20px;">📅</span>
+    <div>
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Winner Announced</div>
+      <div style="font-size:15px;color:#fff;font-weight:700;">March 11, 2026</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span style="font-size:20px;">📧</span>
+    <div>
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Confirmation</div>
+      <div style="font-size:14px;color:#ccc;">Check your inbox — confirmation email on its way</div>
+    </div>
+  </div>
 </div>
 
 <!-- Follow section -->
@@ -343,44 +356,9 @@ document.getElementById('nomineeSection').style.display = 'none';
 function openModal() {
   // Show course offer only if newsletter OR poker accelerator was checked
   const wantsNewsletter = document.getElementById('newsletter').checked;
-  const wantsAccelerator = false;
-  const courseOffer = document.getElementById('modal-course-offer');
-  courseOffer.style.display = (wantsNewsletter || wantsAccelerator) ? 'block' : 'none';
+  // No course offer in modal — just show confirmation
   document.getElementById('modal').classList.add('open');
 }
 function closeModal() { document.getElementById('modal').classList.remove('open'); }
 document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
 
-async function subscribeAndClaim() {
-  const email = _pendingEmail || document.getElementById('yourEmail')?.value || '';
-  const name = _pendingName || document.getElementById('yourName')?.value || '';
-
-  const btn = document.getElementById('claim-course-btn');
-  btn.disabled = true;
-  btn.textContent = '🎉 You\'re enrolled! Check your email for access.';
-  btn.style.background = '#22a86e';
-  btn.onmouseover = null;
-  btn.onmouseout = null;
-
-  // Fire and forget — don't block the UI on network errors
-  if (email) {
-    fetch("https://hooks.zapier.com/hooks/catch/15437751/u0ml2ib/", {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        yourEmail: email,
-        firstName: name.split(' ')[0] || '',
-        lastName: name.split(' ').slice(1).join(' ') || '',
-        newsletter: true,
-        pokerAccelerator: true,
-        source: 'claim-free-course-btn',
-        timestamp: new Date().toISOString()
-      })
-    }).catch(e => console.error('Claim webhook failed:', e));
-  }
-}
-</script>
-</body>
-</html>
